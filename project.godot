@@ -8,17 +8,32 @@
 
 config_version=5
 
+[addons]
+
+ss2d/version="3.3.2"
+
 [application]
 
 config/name="DREAMSMAYNOTCOMETRUE"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=180
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/rmsmartshape/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.007843138, 0.019607844, 0.05490196, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
