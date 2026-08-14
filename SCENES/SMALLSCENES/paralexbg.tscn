@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://gqr1hmd24r8"]
+[gd_scene load_steps=4 format=3 uid="uid://gqr1hmd24r8"]
 
 [ext_resource type="Texture2D" uid="uid://c6525pucliyil" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/paralex_bg/1.png" id="1_mvi1c"]
 [ext_resource type="Texture2D" uid="uid://nofctr1k7pb7" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/paralex_bg/2.png" id="2_x5mw3"]
 [ext_resource type="Texture2D" uid="uid://dliixtnli17jd" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/paralex_bg/3.png" id="3_6rqnm"]
-[ext_resource type="Texture2D" uid="uid://cgamfnml0e3bw" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/paralex_bg/4.png" id="4_ut40f"]
-[ext_resource type="Texture2D" uid="uid://dxod7dt4okes3" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/paralex_bg/5.png" id="5_jf0hk"]
 
 [node name="PARALEXBG" type="Node2D"]
 z_index = -4096
@@ -14,32 +12,24 @@ scroll_scale = Vector2(0.2, 0)
 repeat_size = Vector2(1920, 0)
 
 [node name="1" type="Sprite2D" parent="1"]
+scale = Vector2(6, 6)
 texture = ExtResource("1_mvi1c")
+centered = false
 
 [node name="2" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.3, 0)
 repeat_size = Vector2(1920, 0)
 
 [node name="2" type="Sprite2D" parent="2"]
+scale = Vector2(6, 6)
 texture = ExtResource("2_x5mw3")
+centered = false
 
 [node name="3" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.4, 0)
 repeat_size = Vector2(1920, 0)
 
 [node name="3" type="Sprite2D" parent="3"]
+scale = Vector2(6, 6)
 texture = ExtResource("3_6rqnm")
-
-[node name="4" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.5, 0)
-repeat_size = Vector2(1920, 0)
-
-[node name="4" type="Sprite2D" parent="4"]
-texture = ExtResource("4_ut40f")
-
-[node name="5" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.6, 0)
-repeat_size = Vector2(1920, 0)
-
-[node name="5" type="Sprite2D" parent="5"]
-texture = ExtResource("5_jf0hk")
+centered = false

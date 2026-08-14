@@ -30,10 +30,9 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/rmsmartshape/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/scene_manager/plugin.cfg")
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.007843138, 0.019607844, 0.05490196, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
