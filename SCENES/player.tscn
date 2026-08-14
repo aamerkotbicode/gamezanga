@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://rgik0jj2qk4x"]
+
+[ext_resource type="Script" uid="uid://cxkrdmf1j0lnh" path="res://SCRIPTS/player.gd" id="1_85nbx"]
+[ext_resource type="Texture2D" uid="uid://b4b32w4yc63x8" path="res://icon.svg" id="2_ai16o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7tti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ai16o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_85nbx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o7tti")
+animation = &"idle"
