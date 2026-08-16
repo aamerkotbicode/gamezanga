@@ -104,3 +104,9 @@ shape = SubResource("RectangleShape2D_ai16o")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
+
+[node name="RayCast2Dleft" type="RayCast2D" parent="."]
+target_position = Vector2(-40, 0)
+
+[node name="RayCast2Dright" type="RayCast2D" parent="."]
+target_position = Vector2(40, 0)
