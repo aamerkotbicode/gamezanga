@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlqq03ocdmv8r"]
+
+[ext_resource type="Texture2D" uid="uid://dh8r1eir1ome5" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/grass_tiles2.png" id="1_2p1fu"]
+[ext_resource type="Script" uid="uid://bfkttmc72wx1a" path="res://SCENES/INLEVEL_ENTITES/moving_platform.gd" id="1_jm5is"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jm5is"]
+texture = ExtResource("1_2p1fu")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:4/0 = 0
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:5/0 = 0
+3:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_eofdx"]
+physics_layer_0/collision_layer = 1
+sources/3 = SubResource("TileSetAtlasSource_jm5is")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2p1fu"]
+size = Vector2(192, 66)
+
+[node name="Moving_Platform" type="AnimatableBody2D"]
+script = ExtResource("1_jm5is")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(95, 61)
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray(0, 0, 254, 255, 255, 255, 3, 0, 2, 0, 2, 0, 0, 0, 255, 255, 255, 255, 3, 0, 3, 0, 1, 0, 0, 0)
+tile_set = SubResource("TileSet_eofdx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_2p1fu")
+
+[node name="right" type="RayCast2D" parent="."]
+target_position = Vector2(110, 0)
+
+[node name="left" type="RayCast2D" parent="."]
+target_position = Vector2(-110, 0)
