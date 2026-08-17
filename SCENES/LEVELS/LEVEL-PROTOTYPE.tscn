@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://rgik0jj2qk4x" path="res://SCENES/INLEVEL_ENTITES/player.tscn" id="3_6a77c"]
 [ext_resource type="PackedScene" uid="uid://dlqq03ocdmv8r" path="res://SCENES/INLEVEL_ENTITES/moving_platform.tscn" id="5_3j75i"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mye2u"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3j75i"]
 texture = ExtResource("2_6a77c")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)
@@ -52,7 +52,7 @@ texture = ExtResource("2_6a77c")
 
 [sub_resource type="TileSet" id="TileSet_6a77c"]
 physics_layer_0/collision_layer = 1
-sources/3 = SubResource("TileSetAtlasSource_mye2u")
+sources/3 = SubResource("TileSetAtlasSource_3j75i")
 
 [node name="LEVEL-PROTOTYPE" type="Node2D"]
 script = ExtResource("1_mye2u")
