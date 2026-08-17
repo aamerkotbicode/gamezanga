@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://rgik0jj2qk4x"]
+[gd_scene load_steps=16 format=3 uid="uid://rgik0jj2qk4x"]
 
 [ext_resource type="Script" uid="uid://cxkrdmf1j0lnh" path="res://SCRIPTS/player.gd" id="1_85nbx"]
 [ext_resource type="Texture2D" uid="uid://brpkjmbvx0vpw" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/player-Sheet.png" id="2_5fofg"]
+[ext_resource type="Texture2D" uid="uid://bcylkih5e8a4w" path="res://ASSETS/PNGS/Pixel.png" id="3_4onyl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4onyl"]
 atlas = ExtResource("2_5fofg")
@@ -109,7 +110,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ai16o"]
 size = Vector2(61.11112, 120)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5fofg"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 80.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 98, 0)
+scale_min = 4.0
+scale_max = 7.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_85nbx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -132,3 +143,13 @@ target_position = Vector2(-40, 0)
 
 [node name="RayCast2Dright" type="RayCast2D" parent="."]
 target_position = Vector2(40, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource("3_4onyl")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+process_material = SubResource("ParticleProcessMaterial_5fofg")

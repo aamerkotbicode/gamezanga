@@ -10,11 +10,15 @@ var next_ground
 
 
 func _ready() -> void:
+	$AnimationPlayer.play("desc")
 	$AnimatedSprite2D.play("run")
 	$AnimationPlayer.play("titledown")
 	current_ground = ground_scene.instantiate()
 	current_ground.position = Vector2(0, 200)
 	add_child(current_ground)
+	await $AnimationPlayer.animation_finished
+	desc()
+	
 
 
 func _process(delta: float) -> void:
@@ -38,3 +42,6 @@ func _process(delta: float) -> void:
 			current_ground.queue_free()
 			current_ground = next_ground
 			next_ground = null
+func desc():
+	$AnimationPlayer.play("desc")
+	print("skibidi")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c7cnhiixw3407"]
+[gd_scene load_steps=25 format=4 uid="uid://c7cnhiixw3407"]
 
 [ext_resource type="Script" uid="uid://c1udxr55a8pdj" path="res://SCRIPTS/menu_Scripts/title_screens.gd" id="1_foc6k"]
 [ext_resource type="Texture2D" uid="uid://cxwgxh3uvkp5k" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/3.jpg" id="1_o2gdv"]
@@ -159,6 +159,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_umqra"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(978, 318)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_5ktwg"]
 resource_name = "titledown"
 length = 2.0
@@ -175,24 +202,26 @@ tracks/0/keys = {
 "values": [Vector2(978, -250), Vector2(978, 318)]
 }
 
-[sub_resource type="Animation" id="Animation_umqra"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_2taqt"]
+resource_name = "desc"
+capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Title:position")
+tracks/0/path = NodePath("Label:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(978, 318)]
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2taqt"]
 _data = {
 &"RESET": SubResource("Animation_umqra"),
+&"desc": SubResource("Animation_2taqt"),
 &"titledown": SubResource("Animation_5ktwg")
 }
 
@@ -249,5 +278,5 @@ offset_left = 590.0
 offset_top = 889.0
 offset_right = 1254.0
 offset_bottom = 933.0
-text = "A CANCELED GAME JAM GAME OPACITYYYYYYYYYYYYYYYYY"
+text = "A CANCELED GAME JAM GAME"
 label_settings = SubResource("LabelSettings_2taqt")

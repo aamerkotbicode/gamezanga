@@ -9,13 +9,18 @@ const WALL_JUMP_HOR_SPEED = 1800.0
 @onready var sprite = $AnimatedSprite2D
 @onready var ray_cast_left = $RayCast2Dleft
 @onready var ray_cast_right = $RayCast2Dright
+@onready var particles = $GPUParticles2D
 
 var normal_scale = Vector2(9, 9)
 var squash_scale = Vector2(9, 8.8)
 var wall_jump_used_vel = WALL_JUMP_VELOCITY
 var im_trying_to_walljump_man = false
 var is_flipped = false
+var dead = false
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_accept") and dead:
+		Respawn()
 
 func _physics_process(delta):
 
@@ -107,3 +112,22 @@ func _physics_process(delta):
 		im_trying_to_walljump_man = false
 
 	move_and_slide()
+
+func die():
+	set_physics_process(false)
+	is_flipped = false
+	sprite.flip_v = false
+	death_animation()
+	dead = true
+
+
+func death_animation():
+	particles.emitting = true
+	sprite.visible = false
+
+
+func Respawn():
+	position = get_parent().spawn_position
+	sprite.visible = true
+	set_physics_process(true)
+	dead = false
