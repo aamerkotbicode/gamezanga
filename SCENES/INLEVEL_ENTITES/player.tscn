@@ -41,6 +41,11 @@ region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o7tti"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"climb",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4onyl")
@@ -82,6 +87,23 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5o1r1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfrgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hib7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qp1t")
+}],
+"loop": true,
+"name": &"upward_sneak",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ai16o"]
@@ -94,7 +116,7 @@ script = ExtResource("1_85nbx")
 modulate = Color(0.6955032, 0.6955031, 0.6955031, 1)
 scale = Vector2(9, 9)
 sprite_frames = SubResource("SpriteFrames_o7tti")
-animation = &"run"
+animation = &"upward_sneak"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.49999714, -4.5895576e-06)
