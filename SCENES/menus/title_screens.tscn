@@ -285,11 +285,11 @@ texture = ExtResource("6_5ktwg")
 [node name="desc" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
 z_index = 1
-offset_left = 590.0
-offset_top = 889.0
-offset_right = 1254.0
-offset_bottom = 933.0
-text = "A CANCELED GAME JAM GAME"
+offset_left = 175.0
+offset_top = 819.0
+offset_right = 1743.0
+offset_bottom = 863.0
+text = "A CANCELED GAME THAT WAS MADE FOR THE (GAMEZANGA) GAME JAM"
 label_settings = SubResource("LabelSettings_2taqt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
