@@ -10,7 +10,6 @@ var next_ground
 
 
 func _ready() -> void:
-	$AnimationPlayer.play("desc")
 	$AnimatedSprite2D.play("run")
 	$AnimationPlayer.play("titledown")
 	current_ground = ground_scene.instantiate()
@@ -43,5 +42,4 @@ func _process(delta: float) -> void:
 			current_ground = next_ground
 			next_ground = null
 func desc():
-	$AnimationPlayer.play("desc")
-	print("skibidi")
+	$descanimation.play("desc")

@@ -1,10 +1,9 @@
-[gd_scene load_steps=25 format=4 uid="uid://c7cnhiixw3407"]
+[gd_scene load_steps=26 format=4 uid="uid://c7cnhiixw3407"]
 
 [ext_resource type="Script" uid="uid://c1udxr55a8pdj" path="res://SCRIPTS/menu_Scripts/title_screens.gd" id="1_foc6k"]
 [ext_resource type="Texture2D" uid="uid://cxwgxh3uvkp5k" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/3.jpg" id="1_o2gdv"]
 [ext_resource type="Texture2D" uid="uid://dh8r1eir1ome5" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/grass_tiles2.png" id="2_csq1t"]
 [ext_resource type="Texture2D" uid="uid://brpkjmbvx0vpw" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/player-Sheet.png" id="5_5ktwg"]
-[ext_resource type="PackedScene" uid="uid://cdgx0xi01s4uo" path="res://SCENES/menus/ground.tscn" id="5_74ytb"]
 [ext_resource type="Texture2D" uid="uid://jkbnu8yoyjm5" path="res://ASSETS/PNGS/Menu_assets/Title.png" id="6_5ktwg"]
 [ext_resource type="FontFile" uid="uid://cu4aqfr226a0k" path="res://ASSETS/FONTS/ByteBounce.ttf" id="7_umqra"]
 
@@ -159,8 +158,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_2taqt"]
+font = ExtResource("7_umqra")
+font_size = 64
+
 [sub_resource type="Animation" id="Animation_umqra"]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -176,7 +178,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:modulate")
+tracks/1/path = NodePath("desc:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -202,32 +204,47 @@ tracks/0/keys = {
 "values": [Vector2(978, -250), Vector2(978, 318)]
 }
 
-[sub_resource type="Animation" id="Animation_2taqt"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2taqt"]
+_data = {
+&"RESET": SubResource("Animation_umqra"),
+&"titledown": SubResource("Animation_5ktwg")
+}
+
+[sub_resource type="Animation" id="Animation_wqkb2"]
 resource_name = "desc"
-capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:modulate")
+tracks/0/path = NodePath("desc:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 2,
+"update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2taqt"]
-_data = {
-&"RESET": SubResource("Animation_umqra"),
-&"desc": SubResource("Animation_2taqt"),
-&"titledown": SubResource("Animation_5ktwg")
+[sub_resource type="Animation" id="Animation_j07a2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("desc:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_2taqt"]
-font = ExtResource("7_umqra")
-font_size = 64
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7knsk"]
+_data = {
+&"RESET": SubResource("Animation_j07a2"),
+&"desc": SubResource("Animation_wqkb2")
+}
 
 [node name="title_screens" type="Node2D"]
 script = ExtResource("1_foc6k")
@@ -251,9 +268,6 @@ scale = Vector2(6, 6)
 tile_map_data = PackedByteArray("AAD3//3/AwABAAMAAAD3//7/AwABAAQAAAD3////AwABAAQAAAD3/wAAAwABAAQAAAD3/wEAAwABAAQAAAD4//3/AwABAAMAAAD4//7/AwABAAQAAAD4////AwABAAQAAAD4/wAAAwABAAQAAAD4/wEAAwABAAQAAAD5//3/AwABAAMAAAD5//7/AwABAAQAAAD5////AwABAAQAAAD5/wAAAwABAAQAAAD5/wEAAwABAAQAAAD6//3/AwABAAMAAAD6//7/AwABAAQAAAD6////AwABAAQAAAD6/wAAAwABAAQAAAD6/wEAAwABAAQAAAD7//3/AwABAAMAAAD7//7/AwABAAQAAAD7////AwABAAQAAAD7/wAAAwABAAQAAAD7/wEAAwABAAQAAAD8//3/AwABAAMAAAD8//7/AwABAAQAAAD8////AwABAAQAAAD8/wAAAwABAAQAAAD8/wEAAwABAAQAAAD9//3/AwABAAMAAAD9//7/AwABAAQAAAD9////AwABAAQAAAD9/wAAAwABAAQAAAD9/wEAAwABAAQAAAD+//3/AwABAAMAAAD+//7/AwABAAQAAAD+////AwABAAQAAAD+/wAAAwABAAQAAAD+/wEAAwABAAQAAAD///3/AwABAAMAAAD///7/AwABAAQAAAD/////AwABAAQAAAD//wAAAwABAAQAAAD//wEAAwABAAQAAAAAAP3/AwABAAMAAAAAAP7/AwABAAQAAAAAAP//AwABAAQAAAAAAAAAAwABAAQAAAAAAAEAAwABAAQAAAABAP3/AwABAAMAAAABAP7/AwABAAQAAAABAP//AwABAAQAAAABAAAAAwABAAQAAAABAAEAAwABAAQAAAACAP3/AwABAAMAAAACAP7/AwABAAQAAAACAP//AwABAAQAAAACAAAAAwABAAQAAAACAAEAAwABAAQAAAADAP3/AwABAAMAAAADAP7/AwABAAQAAAADAP//AwABAAQAAAADAAAAAwABAAQAAAADAAEAAwABAAQAAAAEAP3/AwABAAMAAAAEAP7/AwABAAQAAAAEAP//AwABAAQAAAAEAAAAAwABAAQAAAAEAAEAAwABAAQAAAAFAP3/AwABAAMAAAAFAP7/AwABAAQAAAAFAP//AwABAAQAAAAFAAAAAwABAAQAAAAFAAEAAwABAAQAAAAGAP3/AwABAAMAAAAGAP7/AwABAAQAAAAGAP//AwABAAQAAAAGAAAAAwABAAQAAAAGAAEAAwABAAQAAAAHAP3/AwABAAMAAAAHAP7/AwABAAQAAAAHAP//AwABAAQAAAAHAAAAAwABAAQAAAAHAAEAAwABAAQAAAAIAP3/AwABAAMAAAAIAP7/AwABAAQAAAAIAP//AwABAAQAAAAIAAAAAwABAAQAAAAIAAEAAwABAAQAAAAJAP3/AwABAAMAAAAJAP7/AwABAAQAAAAJAP//AwABAAQAAAAJAAAAAwABAAQAAAAJAAEAAwABAAQAAAAKAP7/AwABAAQAAAAKAP//AwABAAQAAAAKAAAAAwABAAQAAAAKAAEAAwABAAQAAAAKAP3/AwABAAMAAAALAP3/AwABAAMAAAALAP7/AwABAAQAAAALAP//AwABAAQAAAALAAAAAwABAAQAAAALAAEAAwABAAQAAAA=")
 tile_set = SubResource("TileSet_wx8da")
 
-[node name="ground" parent="." instance=ExtResource("5_74ytb")]
-position = Vector2(0, 200)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.6955032, 0.6955031, 0.6955031, 1)
 position = Vector2(911, 746)
@@ -263,20 +277,27 @@ animation = &"run"
 frame_progress = 0.33261445
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_2taqt")
-}
-
 [node name="Title" type="Sprite2D" parent="."]
 position = Vector2(978, 318)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("6_5ktwg")
 
-[node name="Label" type="Label" parent="."]
+[node name="desc" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
 offset_left = 590.0
 offset_top = 889.0
 offset_right = 1254.0
 offset_bottom = 933.0
 text = "A CANCELED GAME JAM GAME"
 label_settings = SubResource("LabelSettings_2taqt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2taqt")
+}
+
+[node name="descanimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7knsk")
+}
