@@ -7,3 +7,14 @@ func _ready() -> void:
 func _on_player_respawned():
 	for entity in $Collectables.get_children():
 		entity.reset()
+
+
+
+
+
+
+
+
+func _on_flag_checkpoint(newflagpos: Variant) -> void:
+	sppos.position = newflagpos
+	spawn_position = sppos.position

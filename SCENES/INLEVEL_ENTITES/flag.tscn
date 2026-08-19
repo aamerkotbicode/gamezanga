@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://3iij4q1ls4gx"]
+
+[ext_resource type="Texture2D" uid="uid://g33wnvca4q8x" path="res://ASSETS/PNGS/Level_assets/flag.png" id="1_17feu"]
+[ext_resource type="Script" uid="uid://bogrl5j46ctyo" path="res://SCRIPTS/small_scripts/flag.gd" id="1_x1wos"]
+[ext_resource type="Texture2D" uid="uid://bcylkih5e8a4w" path="res://ASSETS/PNGS/Pixel.png" id="2_n1ncf"]
+[ext_resource type="Texture2D" uid="uid://k1x33rykgudi" path="res://ASSETS/PNGS/Level_assets/flagyellow.png" id="3_csw5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1ncf"]
+size = Vector2(14, 29)
+
+[sub_resource type="Gradient" id="Gradient_x1wos"]
+colors = PackedColorArray(1, 0.53333336, 0, 1, 0.9647059, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1a8jc"]
+gradient = SubResource("Gradient_x1wos")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_csw5l"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 80.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 98, 0)
+scale_min = 3.0
+scale_max = 7.0
+color_ramp = SubResource("GradientTexture1D_1a8jc")
+
+[node name="flag" type="Area2D"]
+script = ExtResource("1_x1wos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 1.5)
+shape = SubResource("RectangleShape2D_n1ncf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_17feu")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_csw5l")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+texture = ExtResource("2_n1ncf")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_csw5l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
