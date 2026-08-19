@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=4 uid="uid://c7cnhiixw3407"]
+[gd_scene load_steps=30 format=4 uid="uid://c7cnhiixw3407"]
 
 [ext_resource type="Script" uid="uid://c1udxr55a8pdj" path="res://SCRIPTS/menu_Scripts/title_screens.gd" id="1_foc6k"]
 [ext_resource type="Texture2D" uid="uid://cxwgxh3uvkp5k" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/3.jpg" id="1_o2gdv"]
 [ext_resource type="Texture2D" uid="uid://dh8r1eir1ome5" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/grass_tiles2.png" id="2_csq1t"]
 [ext_resource type="Texture2D" uid="uid://brpkjmbvx0vpw" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/player-Sheet.png" id="5_5ktwg"]
 [ext_resource type="Texture2D" uid="uid://jkbnu8yoyjm5" path="res://ASSETS/PNGS/Menu_assets/Title.png" id="6_5ktwg"]
+[ext_resource type="PackedScene" uid="uid://cdgx0xi01s4uo" path="res://SCENES/menus/ground.tscn" id="7_2taqt"]
 [ext_resource type="FontFile" uid="uid://cu4aqfr226a0k" path="res://ASSETS/FONTS/ByteBounce.ttf" id="7_umqra"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wx8da"]
@@ -210,6 +211,57 @@ _data = {
 &"titledown": SubResource("Animation_5ktwg")
 }
 
+[sub_resource type="Animation" id="Animation_j07a2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("desc:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("play:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-200, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("options:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-200, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("quit:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-200, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_wqkb2"]
 resource_name = "desc"
 tracks/0/type = "value"
@@ -225,25 +277,58 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_j07a2"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_2taqt"]
+resource_name = "Play"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("desc:modulate")
+tracks/0/path = NodePath("play:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(-200, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7knsk"]
+resource_name = "options"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("options:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-200, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h7tad"]
+resource_name = "Quit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("quit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-200, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7knsk"]
 _data = {
+&"Play": SubResource("Animation_2taqt"),
+&"Quit": SubResource("Animation_h7tad"),
 &"RESET": SubResource("Animation_j07a2"),
-&"desc": SubResource("Animation_wqkb2")
+&"desc": SubResource("Animation_wqkb2"),
+&"options": SubResource("Animation_7knsk")
 }
 
 [node name="title_screens" type="Node2D"]
@@ -287,8 +372,8 @@ modulate = Color(1, 1, 1, 0)
 z_index = 1
 offset_left = 175.0
 offset_top = 819.0
-offset_right = 1743.0
-offset_bottom = 863.0
+offset_right = 2919.0
+offset_bottom = 896.0
 text = "A CANCELED GAME THAT WAS MADE FOR THE (GAMEZANGA) GAME JAM"
 label_settings = SubResource("LabelSettings_2taqt")
 
@@ -301,3 +386,54 @@ libraries = {
 libraries = {
 &"": SubResource("AnimationLibrary_7knsk")
 }
+
+[node name="ground" parent="." instance=ExtResource("7_2taqt")]
+position = Vector2(0, 200)
+
+[node name="play" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(-200, 0)
+
+[node name="Play" type="Button" parent="play"]
+z_index = 1
+offset_left = 54.0
+offset_top = 911.0
+offset_right = 191.0
+offset_bottom = 952.0
+theme_override_fonts/font = ExtResource("7_umqra")
+theme_override_font_sizes/font_size = 48
+text = "Play"
+flat = true
+alignment = 0
+
+[node name="options" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(-200, 0)
+
+[node name="Options" type="Button" parent="options"]
+offset_left = 54.0
+offset_top = 953.0
+offset_right = 191.0
+offset_bottom = 994.0
+theme_override_fonts/font = ExtResource("7_umqra")
+theme_override_font_sizes/font_size = 48
+text = "Options"
+flat = true
+
+[node name="quit" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(-200, 0)
+
+[node name="Quit" type="Button" parent="quit"]
+offset_left = 54.0
+offset_top = 995.0
+offset_right = 191.0
+offset_bottom = 1036.0
+theme_override_fonts/font = ExtResource("7_umqra")
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+flat = true
+alignment = 0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5

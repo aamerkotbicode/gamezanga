@@ -1,5 +1,8 @@
 extends Node2D
 
+
+@onready var w = $Timer
+
 var speed = 100.0
 var ground_width = 1919.0
 
@@ -43,3 +46,15 @@ func _process(delta: float) -> void:
 			next_ground = null
 func desc():
 	$descanimation.play("desc")
+	await $descanimation.animation_finished
+	w.start()
+	await w.timeout
+	$descanimation.play("Play")
+	await $descanimation.animation_finished
+	w.start()
+	await w.timeout
+	$descanimation.play("options")
+	await $descanimation.animation_finished
+	w.start()
+	await w.timeout
+	$descanimation.play("Quit")
