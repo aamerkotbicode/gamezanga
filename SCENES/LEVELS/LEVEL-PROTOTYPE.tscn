@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bcohsqr5us305"]
+[gd_scene load_steps=10 format=4 uid="uid://bcohsqr5us305"]
 
 [ext_resource type="PackedScene" uid="uid://gqr1hmd24r8" path="res://SCENES/SMALLSCENES/paralexbg.tscn" id="1_6a77c"]
 [ext_resource type="Script" uid="uid://dg3k7y0qt476w" path="res://SCENES/LEVELS/level_prototype.gd" id="1_mye2u"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://rgik0jj2qk4x" path="res://SCENES/INLEVEL_ENTITES/player.tscn" id="3_6a77c"]
 [ext_resource type="PackedScene" uid="uid://dlqq03ocdmv8r" path="res://SCENES/INLEVEL_ENTITES/moving_platform.tscn" id="5_3j75i"]
 [ext_resource type="PackedScene" uid="uid://c20aqjcsqp7tx" path="res://SCENES/INLEVEL_ENTITES/Hazards/spike.tscn" id="6_ofitr"]
+[ext_resource type="PackedScene" uid="uid://cuyjur2e5hxff" path="res://SCENES/INLEVEL_ENTITES/gravity_refill.tscn" id="7_vy3xm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3j75i"]
 texture = ExtResource("2_6a77c")
@@ -124,3 +125,11 @@ scale = Vector2(4, 4)
 position = Vector2(2247, -3793)
 rotation = 3.1415927
 scale = Vector2(4, 4)
+
+[node name="Collectables" type="Node2D" parent="."]
+
+[node name="Gravity_refill" parent="Collectables" instance=ExtResource("7_vy3xm")]
+position = Vector2(4240, -2120)
+scale = Vector2(6, 6)
+
+[connection signal="respawned" from="Player" to="." method="_on_player_respawned"]

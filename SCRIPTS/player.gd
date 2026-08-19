@@ -17,6 +17,14 @@ var wall_jump_used_vel = WALL_JUMP_VELOCITY
 var im_trying_to_walljump_man = false
 var is_flipped = false
 var dead = false
+var isFilled = true 
+
+signal respawned
+
+
+
+
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and dead:
@@ -25,10 +33,11 @@ func _process(_delta: float) -> void:
 func _physics_process(delta):
 
 	if Input.is_action_just_pressed("SHIFT") and not is_on_floor() and not is_on_ceiling():
-		is_flipped = !is_flipped
-
-	if is_on_floor() and is_flipped:
-		is_flipped = false
+		if isFilled:
+			is_flipped = !is_flipped
+			isFilled = false
+#	if is_on_floor() and is_flipped:
+#		is_flipped = false
 
 	sprite.flip_v = is_flipped
 
@@ -131,3 +140,8 @@ func Respawn():
 	sprite.visible = true
 	set_physics_process(true)
 	dead = false
+	respawned.emit()
+	isFilled = true
+
+func Refill():
+	isFilled = true

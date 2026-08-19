@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://cuyjur2e5hxff"]
+
+[ext_resource type="Script" uid="uid://bp47jj5d3e3s3" path="res://SCRIPTS/small_scripts/gravity_refill.gd" id="1_bgwu3"]
+[ext_resource type="Texture2D" uid="uid://bp31rvvf7qw3i" path="res://ASSETS/PNGS/Level_assets/gravity_reballl.png" id="2_bgwu3"]
+[ext_resource type="Texture2D" uid="uid://bcylkih5e8a4w" path="res://ASSETS/PNGS/Pixel.png" id="3_8dj6g"]
+
+[sub_resource type="Animation" id="Animation_1a8jc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_bgwu3"]
+resource_name = "hover_down"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_8dj6g"]
+resource_name = "hover_up"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4.01, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(0, -5), Vector2(0, -3), Vector2(0, -1), Vector2(0, -3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vtths"]
+_data = {
+&"RESET": SubResource("Animation_1a8jc"),
+&"hover_down": SubResource("Animation_bgwu3"),
+&"hover_up": SubResource("Animation_8dj6g")
+}
+
+[sub_resource type="Gradient" id="Gradient_8dj6g"]
+colors = PackedColorArray(0.6745098, 0.19607843, 0.19607843, 1, 0.3882353, 0.60784316, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1a8jc"]
+gradient = SubResource("Gradient_8dj6g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1a8jc"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 80.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 98, 0)
+scale_min = 3.0
+scale_max = 7.0
+color_ramp = SubResource("GradientTexture1D_1a8jc")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8ggx"]
+radius = 6.0
+
+[node name="Gravity_refill" type="Area2D"]
+script = ExtResource("1_bgwu3")
+
+[node name="Hover" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vtths")
+}
+speed_scale = 2.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(9, 9)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bgwu3")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource("3_8dj6g")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1a8jc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_e8ggx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="Hover" to="." method="_on_hover_animation_finished"]
