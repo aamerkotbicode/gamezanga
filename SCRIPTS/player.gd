@@ -5,6 +5,8 @@ var speed = 700.0
 const JUMP_VELOCITY = -1600.0
 const WALL_JUMP_VELOCITY = -1400.0
 const WALL_JUMP_HOR_SPEED = 1800.0
+const RED_SPREADSHEET = preload("res://ASSETS/PNGS/Player_assets/playesSpriteFrameRed.tres")
+const GREEN_SPREADSHEET = preload("res://ASSETS/PNGS/Player_assets/playesSpriteFrameGreen.tres")
 
 @onready var sprite = $AnimatedSprite2D
 @onready var ray_cast_left = $RayCast2Dleft
@@ -29,6 +31,10 @@ signal respawned
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and dead:
 		Respawn()
+	if isFilled:
+		sprite.sprite_frames = GREEN_SPREADSHEET
+	else:
+		sprite.sprite_frames = RED_SPREADSHEET
 
 func _physics_process(delta):
 
