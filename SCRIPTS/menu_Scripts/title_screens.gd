@@ -13,6 +13,9 @@ var next_ground
 
 
 func _ready() -> void:
+	$play/Play.disabled = true
+	$quit/Quit.disabled = true
+	$options/Options.disabled = true
 	$AnimatedSprite2D.play("run")
 	$AnimationPlayer.play("titledown")
 	current_ground = ground_scene.instantiate()
@@ -58,3 +61,12 @@ func desc():
 	w.start()
 	await w.timeout
 	$descanimation.play("Quit")
+	await $descanimation.animation_finished
+	$desc2.visible = true
+	$play/Play.disabled = false
+	#$quit/Quit.disabled = false
+	#$options/Options.disabled = false
+
+
+func _on_play_pressed() -> void:
+	get_tree().change_scene_to_file("res://SCENES/LEVELS/LEVEL-PROTOTYPE.tscn")

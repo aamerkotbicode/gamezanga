@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://c7cnhiixw3407"]
+[gd_scene load_steps=31 format=4 uid="uid://c7cnhiixw3407"]
 
 [ext_resource type="Script" uid="uid://c1udxr55a8pdj" path="res://SCRIPTS/menu_Scripts/title_screens.gd" id="1_foc6k"]
 [ext_resource type="Texture2D" uid="uid://cxwgxh3uvkp5k" path="res://ASSETS/PNGS/Level_assets/1GreenFlower/3.jpg" id="1_o2gdv"]
@@ -331,6 +331,8 @@ _data = {
 &"options": SubResource("Animation_7knsk")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_umqra"]
+
 [node name="title_screens" type="Node2D"]
 script = ExtResource("1_foc6k")
 
@@ -377,6 +379,18 @@ offset_bottom = 896.0
 text = "A CANCELED GAME THAT WAS MADE FOR THE (GAMEZANGA) GAME JAM"
 label_settings = SubResource("LabelSettings_2taqt")
 
+[node name="desc2" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = 1079.0
+offset_top = 907.0
+offset_right = 3823.0
+offset_bottom = 998.0
+text = "Alpha 0.0.2
+Controls: arrow keys, Space Bar,
+Shift"
+label_settings = SubResource("LabelSettings_2taqt")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_2taqt")
@@ -386,6 +400,7 @@ libraries = {
 libraries = {
 &"": SubResource("AnimationLibrary_7knsk")
 }
+speed_scale = 1.6
 
 [node name="ground" parent="." instance=ExtResource("7_2taqt")]
 position = Vector2(0, 200)
@@ -400,8 +415,10 @@ offset_left = 54.0
 offset_top = 911.0
 offset_right = 191.0
 offset_bottom = 952.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("7_umqra")
 theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_umqra")
 text = "Play"
 flat = true
 alignment = 0
@@ -437,3 +454,5 @@ alignment = 0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
+
+[connection signal="pressed" from="play/Play" to="." method="_on_play_pressed"]
