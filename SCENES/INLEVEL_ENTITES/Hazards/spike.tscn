@@ -11,7 +11,6 @@ script = ExtResource("1_xkuda")
 texture = ExtResource("2_xkuda")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PackedVector2Array(0, -8, -4.7999997, 0, -7, 8, 7, 8, 4.6, -0.39999998)
+polygon = PackedVector2Array(0, -8, -2.3999999, -5.7999997, -5.2, -0.79999995, -7.9999995, 4.7999997, -8.2, 7.9999995, 8.2, 7.9999995, 7.9999995, 4.9999995, 5.3999996, -0.79999995, 2.3999999, -5.7999997)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

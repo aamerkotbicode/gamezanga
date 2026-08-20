@@ -3,9 +3,7 @@ extends Area2D
 func _ready() -> void:
 	$Hover.play("hover_up")
 func _on_body_entered(body: Node2D) -> void:
-	print("body_entered")
 	if body.name == "Player":
-		print("his name is player")
 		body.Refill()
 		$Sprite2D.visible = false
 		$CollisionShape2D.disabled = true

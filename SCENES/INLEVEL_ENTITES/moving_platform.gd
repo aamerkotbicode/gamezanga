@@ -4,7 +4,7 @@ extends AnimatableBody2D
 var dir = 1
 
 func _physics_process(_delta: float) -> void:
-	position.x += 5 * dir
+	position.x += 10 * dir
 	if right.is_colliding():
 		dir = -1
 	if left.is_colliding():

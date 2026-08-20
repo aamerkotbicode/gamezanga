@@ -18,3 +18,4 @@ func _on_player_respawned():
 func _on_flag_checkpoint(newflagpos: Variant) -> void:
 	sppos.position = newflagpos
 	spawn_position = sppos.position
+	$Player.isFilled = true
