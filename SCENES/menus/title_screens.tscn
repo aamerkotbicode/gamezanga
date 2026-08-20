@@ -365,7 +365,6 @@ frame_progress = 0.33261445
 flip_h = true
 
 [node name="Title" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(978, 318)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("6_5ktwg")

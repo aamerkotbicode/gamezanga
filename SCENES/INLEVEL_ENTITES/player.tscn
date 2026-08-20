@@ -1,11 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://rgik0jj2qk4x"]
+[gd_scene load_steps=5 format=3 uid="uid://rgik0jj2qk4x"]
 
 [ext_resource type="Script" uid="uid://cxkrdmf1j0lnh" path="res://SCRIPTS/player.gd" id="1_85nbx"]
 [ext_resource type="SpriteFrames" uid="uid://c186yhc43tgkv" path="res://ASSETS/PNGS/Player_assets/playesSpriteFrameGreen.tres" id="2_4onyl"]
 [ext_resource type="Texture2D" uid="uid://bcylkih5e8a4w" path="res://ASSETS/PNGS/Pixel.png" id="3_4onyl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ai16o"]
-size = Vector2(61.11112, 120)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5fofg"]
 particle_flag_disable_z = true
@@ -26,20 +23,20 @@ scale = Vector2(9, 9)
 sprite_frames = ExtResource("2_4onyl")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-0.49999714, -4.5895576e-06)
 scale = Vector2(0.9, 0.9)
-shape = SubResource("RectangleShape2D_ai16o")
+polygon = PackedVector2Array(28.33333, -60, -28.333338, -60, -46.111115, 60.000008, 47.22222, 60.000008)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
 [node name="RayCast2Dleft" type="RayCast2D" parent="."]
-target_position = Vector2(-40, 0)
+target_position = Vector2(-50, 0)
 
 [node name="RayCast2Dright" type="RayCast2D" parent="."]
-target_position = Vector2(40, 0)
+target_position = Vector2(50, 0)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
